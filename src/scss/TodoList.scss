@@ -1,0 +1,17 @@
+@import 'Variables';
+
+.todo-list-container{
+    background-color:$todoListBackground;
+    border:1px solid $bordersColor;
+    border-radius: $bordersRadius;
+    padding:$todoListPadding;
+    min-width: $todoListMinWidth;
+    width:70%;
+
+    .todo-list-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom:10px;
+    }
+}

@@ -1,0 +1,32 @@
+@import 'Variables';
+
+.todo-row{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:10px;
+    
+    input[type=text]
+    {
+        font-family: $FontFamily;
+        height:17px;
+        border: 0;
+        width: 100%;
+        margin-left:1px;
+        box-shadow: -2px 8px 0px -7px #ebebeb, 2px 8px 0px -7px #ebebeb;
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+        padding-left:0.5rem;
+    }
+
+    input[type=text]:focus
+    {
+        outline: none;
+        box-shadow: -2px 8px 0px -7px #4EA6EA, 2px 8px 0px -7px #4EA6EA;
+    }
+
+    button:last-child{
+        margin-left:auto;
+    }
+}
