@@ -4,14 +4,14 @@
 //********************************************************************/
 
 /* IMPORT NODE MODULES AND THIRD PARTY COMPONENTS */
-import { IconButton } from '@fluentui/react/lib/Button';
+import { Circle, CheckCircleFill } from 'react-bootstrap-icons';
 
 /* IMPORT CUSTOM COMPONENTS */
 import { setDone } from '../stores/TodoStore';
 
 export default (props:any) => {
     return props.todo.done ?
-    <IconButton iconProps={{ iconName: 'SkypeCircleCheck' }} onClick={()=>setDone({...props.todo, done: !props.todo.done}) } />
+    <div className="btn done-true text-primary" onClick={()=>setDone({...props.todo, done: !props.todo.done}) }><CheckCircleFill /></div>
     :
-    <IconButton iconProps={{ iconName: 'CircleRing' }} onClick={()=>setDone({...props.todo, done: !props.todo.done}) } />
+    <div className="btn done-false" onClick={()=>setDone({...props.todo, done: !props.todo.done}) }><Circle /></div>
 }

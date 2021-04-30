@@ -7,9 +7,8 @@
 import '../scss/App.scss';
 
 /* IMPORT NODE MODULES AND THIRD PARTY COMPONENTS */
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Spinner } from '@fluentui/react/lib/Spinner';
 
 /* IMPORT INTERFACES */
 import IFetchResponse from '../Interfaces/IFetchResponse';
@@ -20,7 +19,7 @@ import ITodoState from '../Interfaces/ITodoState';
 import TodoList from './TodoList';
 import { getTodos } from '../Helpers/FetchApi';
 import { store, setTodos, setError, setIsLoading } from '../stores/TodoStore';
-
+import Spinner  from './Spinner';
 
 const App = (props:any) => {
 
@@ -62,9 +61,9 @@ const App = (props:any) => {
     return  <div className="main-container">
             {
                 appState.isLoading || appState.todos===undefined ? 
-                <Spinner label="Loading..." />
+                <Spinner className="spinner" />
                 :
-                <TodoList />
+                <TodoList className="todo-list" />
             }
             </div>
 }

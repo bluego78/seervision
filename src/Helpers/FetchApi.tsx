@@ -39,11 +39,11 @@ export const getTodos = async () : Promise<IFetchResponse> => {
                 } else if (error.request) {
                   // The request was made but no response was received
                   console.log(error.request);
-                  response.message = error.request;
+                  response.message = 'Errors during the request.';
                 } else {
                   // Something happened in setting up the request that triggered an Error
                   console.log('Error', error.message);
-                  response.message = error.message;
+                  response.message = 'Unkown errors during the request.';
                 }
                 return response;
             });
@@ -75,11 +75,11 @@ export const postTodo = async () : Promise<IFetchResponse> => {
               } else if (error.request) {
                 // The request was made but no response was received
                 console.log(error.request);
-                response.message = error.request;
+                response.message = 'Errors during the request.';
               } else {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error', error.message);
-                response.message = error.message;
+                response.message = 'Unkown errors during the request.';
               }
               return response;
           });
@@ -111,11 +111,11 @@ export const putTodo = async (todo:ITodo) : Promise<IFetchResponse> => {
               } else if (error.request) {
                 // The request was made but no response was received
                 console.log(error.request);
-                response.message = error.request;
+                response.message = 'Errors during the request.';
               } else {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error', error.message);
-                response.message = error.message;
+                response.message = 'Unkown errors during the request.';
               }
               return response;
           });

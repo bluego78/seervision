@@ -26,7 +26,15 @@
         box-shadow: -2px 8px 0px -7px #4EA6EA, 2px 8px 0px -7px #4EA6EA;
     }
 
-    button:last-child{
+    div.btn:last-child{
         margin-left:auto;
+    }
+
+    .btn-delete{
+        color:$lightGrey;
+    }
+
+    .btn-delete:hover{
+        color:red;
     }
 }

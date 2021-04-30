@@ -9,7 +9,7 @@ import '../scss/Todo.scss';
 
 /* IMPORT NODE MODULES AND THIRD PARTY COMPONENTS */
 import { useState } from 'react';
-import { IconButton } from '@fluentui/react/lib/Button';
+import { Trash } from 'react-bootstrap-icons';
 
 /* IMPORT INTERFACES */
 import ITodo from '../Interfaces/ITodo';
@@ -27,8 +27,8 @@ export default (props:any) => {
     const [text, setText] = useState(todo.text);
 
     return <div className="todo-row">
-                <Done todo={todo} />
+                <Done className="done-element" todo={todo} />
                 <input type="text" value={text as string} onChange={(e)=>setText( e.target.value)} onBlur={(e)=>(e.target.value as string==="") ? setDeleted({...todo, deleted: new Date()}) : updateTodo({...todo, text})} />
-                <IconButton iconProps={{ iconName: 'Delete' }} onClick={()=>setDeleted({...todo, deleted: new Date()})} />
+                <div className="btn btn-delete" onClick={()=>setDeleted({...todo, deleted: new Date()})}><Trash /></div>
             </div>
 }

@@ -9,7 +9,7 @@ import '../scss/TodoList.scss';
 
 /* IMPORT NODE MODULES AND THIRD PARTY COMPONENTS */
 import { connect } from 'react-redux';
-import { IconButton } from '@fluentui/react/lib/Button';
+import { PatchPlus } from 'react-bootstrap-icons';
 
 /* IMPORT INTERFACES */
 import ITodo from '../Interfaces/ITodo';
@@ -23,9 +23,9 @@ const TodoList =  (props:any) => {
     return <div className="todo-list-container">
 
     <div className="todo-list-header">
-        <h3>Todo List</h3>
+        <h4 className="todo-list-header-title">Todo List</h4>
         {props.error!=="" ? <div>{props.error}</div> : null}
-        <IconButton iconProps={{ iconName: 'Add' }} onClick={()=>addTodo('aaa')} />
+        <div className="btn btn-add" onClick={()=>addTodo(' ')}><PatchPlus /></div>
     </div>
     
     {(props.todos instanceof Array) && props.todos.map((todo:ITodo, index:number)=>{
