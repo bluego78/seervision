@@ -19,7 +19,7 @@ import Todo from './Todo';
 import { addTodo } from '../stores/TodoStore';
 
 const TodoList =  (props:any) => {
-
+    
     return <div className="todo-list-container">
 
     <div className="todo-list-header">
@@ -30,7 +30,7 @@ const TodoList =  (props:any) => {
     
     {(props.todos instanceof Array) && props.todos.map((todo:ITodo, index:number)=>{
         //Shows the list of todos
-        return <Todo key={index} todo={todo} />
+        return <Todo className="todo-element" key={index} todo={todo} />
     })}
     </div>
 }

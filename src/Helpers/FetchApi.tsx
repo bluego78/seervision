@@ -32,17 +32,17 @@ export const getTodos = async () : Promise<IFetchResponse> => {
             .catch((error) => {
                 if (error.response) {
                   // Request made and server responded
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
+                  //console.log(error.response.data);
+                  //console.log(error.response.status);
+                  //console.log(error.response.headers);
                   response.message = `${error.response} ${error.status} ${error.headers}`;
                 } else if (error.request) {
                   // The request was made but no response was received
-                  console.log(error.request);
+                  //console.log(error.request);
                   response.message = 'Errors during the request.';
                 } else {
                   // Something happened in setting up the request that triggered an Error
-                  console.log('Error', error.message);
+                  //console.log('Error', error.message);
                   response.message = 'Unkown errors during the request.';
                 }
                 return response;

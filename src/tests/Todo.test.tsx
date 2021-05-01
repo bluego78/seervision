@@ -1,7 +1,7 @@
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-
+import { unmountComponentAtNode } from "react-dom";
+import { shallow } from 'enzyme';
 import Todo from '../components/Todo';
+import Done from '../components/Done';
 
 let container:any = null;
 beforeEach(() => {
@@ -17,20 +17,22 @@ afterEach(() => {
   container = null;
 });
 
-describe('<Todo /> component tests', () => {
+describe('<Todo />', () => {
 
-    // Verify if renders the todo row container
-    it("Todo renders the todo row and all its children", () => {
-        
-      let fakeTodo = {_id:"xxxx", text:"xxx", done:true, deleted:null, created:null, updated:null}
-        act(() => {
-          render(<Todo todo={fakeTodo} />, container);
-        });
+    it('<Todo /> renders all the elements' , () => {
+        let fakeTodo = {_id:"xxxx", text:"xxx", done:true, deleted:null, created:null, updated:null}
+        let wrapper = shallow(<Todo todo={fakeTodo}/>);
+        expect(wrapper.length).toBe(1);
+        expect(wrapper.find(Done).length).toBe(1);
+        expect(wrapper.find(".btn-delete").length).toBe(1);
+        expect(wrapper.find(".todo-input").length).toBe(1);
+    });
 
-        expect(container.querySelector(".todo-row")).toBeInTheDocument;
-        expect(container.querySelector(".done-element")).toBeInTheDocument;
-        expect(container.querySelector(".btn-delete")).toBeInTheDocument;
-        
+    it('<Todo /> passes the todo props to <Done />' , () => {
+        let fakeTodo = {_id:"xxxx", text:"xxx", done:true, deleted:null, created:null, updated:null}
+        let wrapper = shallow(<Todo todo={fakeTodo}/>);
+        let done = wrapper.find(Done);
+        expect(done.props().todo).toEqual(fakeTodo); 
     });
 
 });

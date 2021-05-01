@@ -1,8 +1,13 @@
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-
+import { unmountComponentAtNode } from "react-dom";
 import TodoList from '../components/TodoList';
-import { store } from '../stores/TodoStore';
+import { initState } from '../stores/TodoStore';
+import configureStore from 'redux-mock-store';
+import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+
+const mockStore = configureStore([]);
+let mockedStore:any;
+let component:any;
 
 let container:any = null;
 beforeEach(() => {
@@ -16,22 +21,32 @@ afterEach(() => {
   unmountComponentAtNode(container);
   container.remove();
   container = null;
+  component = null;
 });
 
-describe('<TodoList /> component tests', () => {
+describe('<TodoList />', () => {
 
-    // Verify if renders the TodoList container
-    it("TodoList renders the TodoList container and all its children", () => {
+    it("<TodoList /> renders all the elements", () => {
         
-        act(() => {
-          render(<TodoList store={store}  />, container);
-        });
+      let fakeTodos = [
+          {_id:"1", text:"A", done:true, deleted:null, created:null, updated:null},
+          {_id:"2", text:"B", done:true, deleted:null, created:null, updated:null},
+          {_id:"3", text:"C", done:true, deleted:null, created:null, updated:null}
+        ];
 
-        expect(container.querySelector(".todo-list-header")).toBeInTheDocument;
-        expect(container.querySelector(".todo-list-header-title")).toBeInTheDocument;
-        expect(container.querySelector(".todo-list-header-title").textContent).toBe("Todo List");
-        expect(container.querySelector(".btn-add")).toBeInTheDocument;
-        
+        mockedStore = mockStore({...initState, todos: fakeTodos });
+       
+        component = renderer.create(
+          <Provider store={mockedStore}>
+            <TodoList todos={fakeTodos} /> 
+          </Provider>
+        );
+
+        expect(component.root.findByProps({className: "todo-list-container"})).toBeTruthy();
+        expect(component.root.findByProps({className: "todo-list-header"})).toBeTruthy();
+        expect(component.root.findByProps({className: "todo-list-header-title"})).toBeTruthy();
+        expect(component.root.findByProps({className: "btn btn-add"})).toBeTruthy();
+
     });
 
 });

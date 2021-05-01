@@ -28,7 +28,7 @@ export default (props:any) => {
 
     return <div className="todo-row">
                 <Done className="done-element" todo={todo} />
-                <input type="text" value={text as string} onChange={(e)=>setText( e.target.value)} onBlur={(e)=>(e.target.value as string==="") ? setDeleted({...todo, deleted: new Date()}) : updateTodo({...todo, text})} />
+                <input className="todo-input" type="text" value={text as string} onChange={(e)=>setText( e.target.value)} onBlur={(e)=>(e.target.value as string==="") ? setDeleted({...todo, deleted: new Date()}) : updateTodo({...todo, text})} />
                 <div className="btn btn-delete" onClick={()=>setDeleted({...todo, deleted: new Date()})}><Trash /></div>
             </div>
 }
